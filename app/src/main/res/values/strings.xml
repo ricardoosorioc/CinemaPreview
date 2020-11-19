@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Cinema</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_reservations">Reservations</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="swipeButtonText">SWIPE TO RESERVE</string>
+    <string name="movieTitle">Title</string>
+    <string name="movieTime">13:30</string>
+    <string name="no_reservations_msg_header">No reservations yet</string>
+    <string name="no_favorites_msg_header">No favorites yet</string>
+    <string name="no_favorites_msg_body">Tap the heart icon on a film to add it to your favorites list.</string>
+    <string name="no_reservations_msg_body">Tap the RESERVE button on a film to make a reservation.</string>
+
+    <string-array name="genres_array">
+        <item>All</item>
+        <item>Drama</item>
+        <item>Adventure</item>
+        <item>Action</item>
+        <item>Terror</item>
+        <item>Comedy</item>
+        <item>Romance</item>
+        <item>Sports</item>
+        <item>Animation</item>
+    </string-array>
+</resources>
