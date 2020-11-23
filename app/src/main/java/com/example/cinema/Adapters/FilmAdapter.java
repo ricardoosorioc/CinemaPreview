@@ -21,6 +21,7 @@ import com.example.cinema.BD.Repository;
 import com.example.cinema.Model.Film;
 import com.example.cinema.R;
 import com.example.cinema.Views.MainActivity;
+import com.example.cinema.Views.MainReservationActivity;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -168,7 +169,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmHolder> {
         }
 
         private void openPage(Film film, String time) {
-            Intent intent = new Intent(contextGetter.getActivity(), MainActivity.class);
+            Intent intent = new Intent(contextGetter.getActivity(), MainReservationActivity.class);
             intent.putExtra("film", film);
             intent.putExtra("time", time);
             contextGetter.startActivity(intent);
