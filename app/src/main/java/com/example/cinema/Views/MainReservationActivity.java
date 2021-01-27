@@ -4,9 +4,7 @@ package com.example.cinema.Views;
 
 import android.content.Intent;
 import android.os.Build;
-//import android.support.annotation.RequiresApi;
-//import android.support.v4.app.NavUtils;
-//import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
@@ -15,26 +13,26 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import com.example.cinema.BD.Repository;
+import com.example.cinema.Presenter.MainReservationPresenter;
 import com.example.cinema.R;
 import com.example.cinema.Controlers.SwipeButton;
 import com.example.cinema.Model.Film;
 import com.example.cinema.Adapters.GridViewAdapter;
-//import com.example.cinema.presenter.MakeReservationPresenter;
-//import com.example.cinema.repository.Repository;
 
-public class MainReservationActivity extends AppCompatActivity  {
-    //private MakeReservationPresenter presenter;
+
+public class MainReservationActivity extends AppCompatActivity  implements MainReservationPresenter.MainView {
+    private MainReservationPresenter presenter;
     private GridViewAdapter adapter;
 
     private SwipeButton swipeButton;
     private SwipeButton.OnSwipeButtonListener swipeButtonExpandedListener = new SwipeButton.OnSwipeButtonListener() {
-
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         public void onSwipeButtonExpanded(View v) {
-            //saveReservation();
+            saveReservation();
             //don't allow to return to this activity
             MainReservationActivity.this.finish();
         }
@@ -65,10 +63,10 @@ public class MainReservationActivity extends AppCompatActivity  {
 
 
         //create the presenter and update the with the new film information on View
-        /*presenter = new MakeReservationPresenter(this, film, time);
+        presenter = new MainReservationPresenter(this, film, time);
         presenter.updatePoster();
         presenter.updateTitle();
-        presenter.updateStartTime();*/
+        presenter.updateStartTime();
 
         GridView gridView = (GridView)findViewById(R.id.gridPlaces);
         adapter = new GridViewAdapter(this);
@@ -80,7 +78,7 @@ public class MainReservationActivity extends AppCompatActivity  {
         swipeButton.setSwipeListener(swipeButtonExpandedListener);
     }
 
-    /*
+
     @Override
     public void setPoster(int moviePosterID) {
         ImageView posterImageView = (ImageView)findViewById(R.id.moviePosterImageView);
@@ -106,7 +104,11 @@ public class MainReservationActivity extends AppCompatActivity  {
         presenter.createReservation();
 
         //return to Parent
-        Intent parentIntent = NavUtils.getParentActivityIntent(this);
-        startActivity(parentIntent);
-    }*/
+
+        Intent moveToMain = new Intent(MainReservationActivity.this, MainActivity.class);
+        startActivity(moveToMain);
+
+    }
+
+
 }

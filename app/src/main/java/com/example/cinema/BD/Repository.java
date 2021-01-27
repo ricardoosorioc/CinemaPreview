@@ -3,6 +3,11 @@ package com.example.cinema.BD;
 
 
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import com.example.cinema.Model.Reservation;
 import com.example.cinema.R;
 import com.example.cinema.Model.Film;
 
@@ -20,6 +25,7 @@ public class Repository {
     public static List<Film> favoriteList = new ArrayList<>();
     private static HashMap<String, HashMap<Time, List<Boolean>>> program;
     static List<Boolean> cinemaPlaces;
+    static List<Reservation> reservationList = new ArrayList<>();
 
     public static List<Film> getHardcodedList() {
         List<Film> filmList = Arrays.asList(
@@ -37,6 +43,26 @@ public class Repository {
         return filmList;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static void addReservation(Reservation reservation) {
+
+        if (!searchReservation(reservation)) {
+
+            reservationList.add(reservation);
+            markReservedPlaces(reservation.getPlaces());
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private static boolean searchReservation(Reservation reservation) {
+
+        for (Reservation r : reservationList) {
+
+            if (r.equals(reservation))
+                return true;
+        }
+        return false;
+    }
 
     private static void markReservedPlaces(List<Integer> places) {
         for (int i : places) {
@@ -119,6 +145,10 @@ public class Repository {
 
         cinemaPlaces = getHardcodedProgram().get(filmTitle).get(timeObj);
         return cinemaPlaces;
+    }
+
+    public static List<Reservation> getReservationList() {
+        return reservationList;
     }
 
 

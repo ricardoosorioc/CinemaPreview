@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     selectedFragment = new HomeFragment();
                     break;
-                /*case R.id.navigation_reservation:
+                case R.id.navigation_reservation:
                     selectedFragment = new ReservationFragment();
                     break;
                 case R.id.navigation_favorites:
                     selectedFragment = new FavoritesFragment();
-                    break;*/
+                    break;
             }
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
